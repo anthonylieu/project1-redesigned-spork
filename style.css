@@ -1,0 +1,149 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
+header {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all .3s ease;
+}
+
+nav a:hover {
+    color: #0088cc;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+form input[type="text"] {
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+form button {
+    background-color: #0088cc;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #006699;
+}
+
+#movie-details {
+    margin-top: 20px;
+}
+
+#movie-details img {
+    float: left;
+    margin-right: 20px;
+}
+
+#movie-details h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#movie-details p {
+    margin-bottom: 20px;
+}
+
+#watchlist-movies {
+    list-style: none;
+}
+
+.watchlist-movie {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.watchlist-movie img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.watchlist-movie h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.watchlist-movie p {
+    margin-bottom: 5px;
+}
+
+.remove-movie {
+    background-color: #cc0000;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.remove-movie:hover {
+    background-color: #990000;
+}
