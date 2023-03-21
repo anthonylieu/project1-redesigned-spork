@@ -88,8 +88,15 @@ form button:hover {
     background-color: #006699;
 }
 
+.movie-details-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
 #movie-details {
-    margin-top: 20px;
+    margin-right: 20px;
 }
 
 #movie-details img {
@@ -107,7 +114,9 @@ form button:hover {
 }
 
 #watchlist-movies {
+    margin-top: 20px;
     list-style: none;
+    padding: 0;
 }
 
 .watchlist-movie {
@@ -131,7 +140,7 @@ form button:hover {
 }
 
 .watchlist-movie p {
-    margin-bottom: 5px;
+    margin: 20px;
 }
 
 .remove-movie {
@@ -147,3 +156,4 @@ form button:hover {
 .remove-movie:hover {
     background-color: #990000;
 }
+
