@@ -120,6 +120,11 @@ form button:hover {
     padding: 0;
 }
 
+#gif {
+    display: block;
+    margin: 0 auto;
+  }
+
 .watchlist-movie img {
     width: 100px;
     height: 150px;
@@ -151,4 +156,3 @@ form button:hover {
 .remove-movie:hover {
     background-color: #990000;
 }
-
