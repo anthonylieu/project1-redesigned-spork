@@ -24,15 +24,6 @@ var $movieTitleInput = $("#movie-title");
 var $searchForm = $("form");
 var $movieDetails = $("#movie-details");
 
-fetch('https://api.giphy.com/v1/gifs/random?api_key=Q4cEPAQg4xeKcVG1BKFhTzBI8Yc1ovqt&tag=&rating=g')
-      .then(response => response.json())
-      .then(data => {
-        const gifUrl = data.data.images.original.url;
-        const gifElement = document.getElementById('gif');
-        gifElement.src = gifUrl;
-      })
-      .catch(error => console.error(error));
-
 // 3a.  This code attaches an event listener to the `$searchForm` variable (which is a jQuery object representing the search form) that listens for the "submit" event.
 
 // 3b.  When the user submits the search form, thje anonymous function passed to `.on()` is executed.
@@ -86,6 +77,15 @@ function getMovieDetails(movieTitle) {
       console.log(error);
     },
   });
+  
+  fetch('https://api.giphy.com/v1/gifs/random?api_key=Q4cEPAQg4xeKcVG1BKFhTzBI8Yc1ovqt&tag=' + movieTitle + '&rating=g')
+  .then(response => response.json())
+  .then(data => {
+    const gifUrl = data.data.images.original.url;
+    const gifElement = document.getElementById('gif');
+    gifElement.src = gifUrl;
+  })
+  .catch(error => console.error(error));
 }
 
 // 5a.  This code defines a function called `displayMovieDetails()` that accepts a single argument called `movie`.  This function is responsible for displaying the movie's details in the UI.
