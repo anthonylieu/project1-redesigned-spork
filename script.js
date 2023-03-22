@@ -1,3 +1,5 @@
+// All instructional contents references the code underneath it.  
+
 // 1a.  This code declares a variable called `omdbApiUrl` and assigns it as a string value of "https://www.omdbapi.com/?apikey=7c59bc3b".
 
 // 1b.  The value of this variable is an API endpoint for the Open Movie Database (OMDB) that requries an API key to access.  This endpoint allows the application to send HTTP requests to the OMDB API and retrieve movie data based on the user's search query.
@@ -77,7 +79,26 @@ function getMovieDetails(movieTitle) {
       console.log(error);
     },
   });
-  
+
+// 4.5a.  This code uses the `fetch()` method to make a request to the Giphy API. 
+
+// 4.5b.  The request URL includes an API key, the movie title (passed in as a variable), and a rating parameter.
+
+// 4.5c.  The `.then()` method is used to handle the response from the API.
+
+// 4.5d.  The response is converted to JSON format using the `.json()` method.
+
+// 4.5e.  The resulting data is then passed to another `.then()` method to extract the URL of the first result from the API response.
+
+// 4.5f.  The URL is assigned to a variable called `gifUrl`. 
+
+// 4.5g.  The `document.getElementById()` method is used to get a reference to an HTML element with an ID of "gif".
+
+// 4.5h.  The `.src` property of this element is set to the value of `gifUrl`.
+
+// 4.5i.  If there is an error, the `.catch()` method is called to log the error to the console.
+
+  // Fetch for Giphy API
   fetch('https://api.giphy.com/v1/gifs/random?api_key=Q4cEPAQg4xeKcVG1BKFhTzBI8Yc1ovqt&tag=' + movieTitle + '&rating=pg-13')
   .then(response => response.json())
   .then(data => {
@@ -201,31 +222,25 @@ function getWatchlistMovies() {
   return JSON.parse(localStorage.getItem("watchlist")) || [];
 }
 
-// 10a.  This code defines a function called `displayWatchlist()` that displays the user's watchlist in the UI.
+// 10a.  The `displayWatchlist()` function displays a list of movies in the user's watchlist.
 
-// 10b.  The first line of the function calls the `getWatchlistMovies()` function to retrieves the user's watchlist from local storage and assigns it to the `movies` variable.
+// 10b.  The function starts by calling the `getWatchlistMovies()` function to retrieve an array of movie objects.
 
-// 10c.  The second line of the function empties the `$watchlistMovies` element, which is where the watchlist data will be displayed in the UI.
+// 10c.  The `$watchlistMovies` container element is emptied out using the `.empty()` method.
 
-// 10d.  The next few lines of code loop through each `movie` object, the code creates HTML elements to display the movie data in the UI.
+// 10d.  The function uses the `$.each()` method to loop through each movie object in the array.
 
-// - `poster` is an `<img>` element that displays the movie poster image.  It is created using jQuery's `$()` method and the `.attr()` method to set the `src` and `alt` attributes of the image.
+// 10e.  For each movie, the function creates several jQuery objects representing the various details of the movie (e.g. title, year, rating, genre, plot). 
 
-// - `title` is an `<h3>` element that displays the movie title.  It is created using jQuery's `$()` method and the `.text()` method to set the text content of the element.
+// 10f.  A remove button is also created for each movie.
 
-// - `$year`, `$rating`, and `$genre` are `<p>` elements that display the movie's year, rating, and genre, respectively.  They are created using jQuery's `$()` method and the `.text()` method to set the text content of each element.
+// 10g.  ALl of these newly created elements are appened to a new table row element using the `.append()` method.
 
-// - `$plot` is a `<p>` element that displays the movie's plot summary.  It is created using jQuery's `$()` method and the `.text()` method to set the text content of the element.
+// 10h.  The index of the current movie object is stored in the `data-index` attribute of the new table reow element using the `.data()` method.
 
-// - `$removeButton` is a `<button>` element with the class "remove-movie" and the text "Remove."  It is created using jQuery's `$()` method and the `.addClass()` and `.text()` methods.
+// 10i.  Finally, the new table row element is appended to the `$watchlistMovies` container element on the webpage.
 
-// 10e.  The next line of code creates a new `<li>` element with the class "watchlist-movie" and appends all of the above HTML elements to it using the `.append()` method.
-
-// 10f.  The line `$watchlistMovies.data("index", index)` stores the index of the current movie in the `data` attribute of the `$watchlistMovie` element.  This will be used later to determine which movie to remove from the watchlist if the user clicks the "Remove" button.
-
-// 10g.  Finally the completed `$watchlistMovie` element is appended to the `$watchlistMovies` element in the UI.
-
-// 10h. In summary, this function retrieves the user's watchlist from local storage, empties the `$watchlistMovies` element in the UI, and the ncreates and appends HTML elements for each movie in the watchlist to the`watchlistMovies` element.  The function also stores the index of each movie in the `data` attribute of its corresponding HTML element, so that it can be used later to remove the movie from the watchlist.
+// 10j.  The function ends, leaving the newly created watchlist on the webpage.  
 
 // Function to display watchlist movies in the UI
 function displayWatchlist() {
