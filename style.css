@@ -88,8 +88,16 @@ form button:hover {
     background-color: #006699;
 }
 
+.movie-details-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+
 #movie-details {
-    margin-top: 20px;
+    margin-right: 20px;
 }
 
 #movie-details img {
@@ -107,15 +115,9 @@ form button:hover {
 }
 
 #watchlist-movies {
+    margin-top: 20px;
     list-style: none;
-}
-
-.watchlist-movie {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+    padding: 0;
 }
 
 .watchlist-movie img {
@@ -125,13 +127,15 @@ form button:hover {
     margin-right: 20px;
 }
 
-.watchlist-movie h3 {
+.watchlist-movie .title {
     font-size: 20px;
     margin-bottom: 10px;
+    width: 160px;
 }
 
-.watchlist-movie p {
-    margin-bottom: 5px;
+.watchlist-movie > td {
+    padding: 0 20px 20px;
+    vertical-align: top;
 }
 
 .remove-movie {
@@ -147,3 +151,4 @@ form button:hover {
 .remove-movie:hover {
     background-color: #990000;
 }
+
