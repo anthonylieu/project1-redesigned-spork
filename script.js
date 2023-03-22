@@ -78,7 +78,7 @@ function getMovieDetails(movieTitle) {
     },
   });
   
-  fetch('https://api.giphy.com/v1/gifs/random?api_key=Q4cEPAQg4xeKcVG1BKFhTzBI8Yc1ovqt&tag=' + movieTitle + '&rating=g')
+  fetch('https://api.giphy.com/v1/gifs/random?api_key=Q4cEPAQg4xeKcVG1BKFhTzBI8Yc1ovqt&tag=' + movieTitle + '&rating=pg-13')
   .then(response => response.json())
   .then(data => {
     const gifUrl = data.data.images.original.url;
