@@ -120,14 +120,6 @@ form button:hover {
     padding: 0;
 }
 
-.watchlist-movie {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-}
-
 .watchlist-movie img {
     width: 100px;
     height: 150px;
@@ -135,13 +127,15 @@ form button:hover {
     margin-right: 20px;
 }
 
-.watchlist-movie h3 {
+.watchlist-movie .title {
     font-size: 20px;
     margin-bottom: 10px;
+    width: 160px;
 }
 
-.watchlist-movie p {
-    margin: 20px;
+.watchlist-movie > td {
+    padding: 0 20px 20px;
+    vertical-align: top;
 }
 
 .remove-movie {

@@ -109,7 +109,7 @@ function displayMovieDetails(movie) {
   var $rating = $("<p>").text("Rating: " + movie.imdbRating);
   var $genre = $("<p>").text("Genre: " + movie.Genre);
   var $plot = $("<p>").text(movie.Plot);
-  var $addButton = $("<button>").addClass("add-movie").text("Add to Watchlist");
+  var $addButton = $("<button>").addClass("btn btn-success add-movie").text("Add to Watchlist");
 
   $movieDetails
     .empty()
@@ -224,14 +224,14 @@ function displayWatchlist() {
   $watchlistMovies.empty();
 
   $.each(movies, function (index, movie) {
-    var $title = $("<h3>").text(movie.title);
-    var $year = $("<p>").text("Year: " + movie.year);
-    var $rating = $("<p>").text("Rating: " + movie.rating);
-    var $genre = $("<p>").text("Genre: " + movie.genre);
-    var $plot = $("<p>").text(movie.plot);
+    var $title = $("<td class='title'>").text(movie.title);
+    var $year = $("<td class='content'>").text("Year: " + movie.year);
+    var $rating = $("<td class='content'>").text("Rating: " + movie.rating);
+    var $genre = $("<td class='content'>").text("Genre: " + movie.genre);
+    var $plot = $("<td class='content'>").text(movie.plot);
     var $removeButton = $("<button>").addClass("remove-movie").text("Remove");
 
-    var $watchlistMovie = $("<li>")
+    var $watchlistMovie = $("<tr>")
       .addClass("watchlist-movie")
       .append($title, $year, $rating, $genre, $plot, $removeButton);
     $watchlistMovie.data("index", index);
