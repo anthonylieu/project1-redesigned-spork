@@ -1,19 +1,19 @@
-// OMDB API endpoint
+// OMDB API Endpoint
 var omdbApiUrl = "https://www.omdbapi.com/?apikey=7c59bc3b";
 
-//Global variables
+//Global Variables
 var $movieTitleInput = $("#movie-title");
 var $searchForm = $("form");
 var $movieDetails = $("#movie-details");
 
-// Listen for search form submission
+// Listens for submission of the search form
 $searchForm.on("submit", function (event) {
   event.preventDefault();
   var movieTitle = $movieTitleInput.val();
   getMovieDetails(movieTitle);
 });
 
-// Function to retrieve movie details from OMDB API
+// Retrieves movie details from OMDB API
 function getMovieDetails(movieTitle) {
   $.ajax({
     url: omdbApiUrl,
@@ -30,18 +30,22 @@ function getMovieDetails(movieTitle) {
     },
   });
 
-  // Fetch for Giphy API
-  fetch('https://api.giphy.com/v1/gifs/random?api_key=Q4cEPAQg4xeKcVG1BKFhTzBI8Yc1ovqt&tag=' + movieTitle + '&rating=pg-13')
-  .then(response => response.json())
-  .then(data => {
-    const gifUrl = data.data.images.original.url;
-    const gifElement = document.getElementById('gif');
-    gifElement.src = gifUrl;
-  })
-  .catch(error => console.error(error));
+  // Fetches for Giphy API
+  fetch(
+    "https://api.giphy.com/v1/gifs/random?api_key=Q4cEPAQg4xeKcVG1BKFhTzBI8Yc1ovqt&tag=" +
+      movieTitle +
+      "&rating=pg-13"
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      const gifUrl = data.data.images.original.url;
+      const gifElement = document.getElementById("gif");
+      gifElement.src = gifUrl;
+    })
+    .catch((error) => console.error(error));
 }
 
-// Function to display movie details in the UI
+// This displays movie details in the UI
 function displayMovieDetails(movie) {
   var $poster = $("<img>").attr("src", movie.Poster);
   var $title = $("<h3>").text(movie.Title);
@@ -49,17 +53,19 @@ function displayMovieDetails(movie) {
   var $rating = $("<p>").text("Rating: " + movie.imdbRating);
   var $genre = $("<p>").text("Genre: " + movie.Genre);
   var $plot = $("<p>").text(movie.Plot);
-  var $addButton = $("<button>").addClass("btn btn-success add-movie").text("Add to Watchlist");
+  var $addButton = $("<button>")
+    .addClass("btn btn-success add-movie")
+    .text("Add to Watchlist");
 
   $movieDetails
     .empty()
     .append($poster, $title, $year, $rating, $genre, $plot, $addButton);
 }
 
-// Global variables
+// Global Variables
 var $watchlistMovies = $("#watchlist-movies");
 
-// Listen for add button click
+// Listens for add button click
 $movieDetails.on("click", ".add-movie", function () {
   var movie = {
     title: $movieDetails.find("h3").text(),
@@ -75,10 +81,24 @@ $movieDetails.on("click", ".add-movie", function () {
     plot: $movieDetails.find("p").last().text(),
   };
 
-  addMovieToWatchlist(movie);
+  // Checks if movie is already on watchlist
+  if (isMovieOnWatchlist(movie)) {
+    alert("This movie is already on your watchlist!");
+  } else {
+    addMovieToWatchlist(movie);
+  }
 });
 
-// Function to add movie to local storage
+// Checks if a movie is already on the watchlist
+function isMovieOnWatchlist(movie) {
+  var movies = getWatchlistMovies();
+  var movieTitles = movies.map(function (movie) {
+    return movie.title;
+  });
+  return movieTitles.includes(movie.title);
+}
+
+// Adds movie to local storage
 function addMovieToWatchlist(movie) {
   var movies = JSON.parse(localStorage.getItem("watchlist")) || [];
   movies.push(movie);
@@ -87,12 +107,12 @@ function addMovieToWatchlist(movie) {
   displayWatchlist();
 }
 
-// Function to retrieve watchlist movies from local storage
+// Retrieves watchlist movies from local storage
 function getWatchlistMovies() {
   return JSON.parse(localStorage.getItem("watchlist")) || [];
 }
 
-// Function to display watchlist movies in the UI
+// Displays watchlist movies in the UI
 function displayWatchlist() {
   var movies = getWatchlistMovies();
   $watchlistMovies.empty();
@@ -113,13 +133,13 @@ function displayWatchlist() {
   });
 }
 
-// Listen for remove button click
+// Listesn for remove button click
 $watchlistMovies.on("click", ".remove-movie", function () {
   var movieIndex = $(this).closest(".watchlist-movie").data("index");
   removeMovieFromWatchlist(movieIndex);
 });
 
-// Function to remove movie from local storage
+// Removes movie from local storage
 function removeMovieFromWatchlist(movieIndex) {
   var movies = getWatchlistMovies();
   movies.splice(movieIndex, 1);
@@ -128,12 +148,12 @@ function removeMovieFromWatchlist(movieIndex) {
   displayWatchlist();
 }
 
-// Initialize the application
+// Initializes the application
 function init() {
   displayWatchlist();
 }
 
-// Call the init function when the page is ready
+// Calls the init function when the page is ready to go
 $(document).ready(function () {
   init();
 });
