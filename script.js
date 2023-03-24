@@ -81,14 +81,6 @@ $movieDetails.on("click", ".add-movie", function () {
     plot: $movieDetails.find("p").last().text(),
   };
 
-  // Checks if movie is already on watchlist
-  if (isMovieOnWatchlist(movie)) {
-    alert("This movie is already on your watchlist!");
-  } else {
-    addMovieToWatchlist(movie);
-  }
-});
-
 // Checks if a movie is already on the watchlist
 function isMovieOnWatchlist(movie) {
   var movies = getWatchlistMovies();
@@ -157,3 +149,4 @@ function init() {
 $(document).ready(function () {
   init();
 });
+})
